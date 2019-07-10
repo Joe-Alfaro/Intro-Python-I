@@ -30,14 +30,12 @@ currYear = int(datetime.now().strftime('%Y'))
 def make_calendar(month=currMonth, year=currYear):
     myCalendar.prmonth(year, month)
 
-selected = input("enter month(mm) and year(yyyy) seperated by a space: ")
-if selected == '':
-    selected = []
-else:
-    selected = selected.split(' ')
+selected = sys.argv[1:] 
 
-if len(selected) < 1 or len(selected) > 2:
-    print("Invalid Input")
+if len(selected) < 1:
+    make_calendar(currMonth, currYear) 
+elif len(selected) > 2:
+    print('Invalid Input')
 elif len(selected) == 1:
     make_calendar(int(selected[0]), currYear)
 elif len(selected) == 2:
