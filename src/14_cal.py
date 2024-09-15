@@ -22,3 +22,21 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+myCalendar = calendar.TextCalendar(calendar.SUNDAY)
+currMonth = int(datetime.now().strftime('%m'))
+currYear = int(datetime.now().strftime('%Y'))
+
+def make_calendar(month=currMonth, year=currYear):
+    myCalendar.prmonth(year, month)
+
+selected = sys.argv[1:] 
+
+if len(selected) < 1:
+    make_calendar(currMonth, currYear) 
+elif len(selected) > 2:
+    print('Invalid Input')
+elif len(selected) == 1:
+    make_calendar(int(selected[0]), currYear)
+elif len(selected) == 2:
+    make_calendar(int(selected[0]), int(selected[1]))
